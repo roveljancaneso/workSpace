@@ -10,48 +10,155 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-  age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 
-           19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 24, 33, 41)
-
+#1. Vector
+age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 
+         20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 24, 33, 41)
+#A. How many data points?
 length(age)
+#B. R code and output:
+age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 
+         20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 24, 33, 41)
+age
+```
 
+```{r}
+#2. Reciprocal
+#R code and output:
 recip <- 1 / age
 library("MASS")
 fractions(recip)
-
-new_age <- c(age, 0, age)
-
-sort(age)
-
-min(age)
-max(age)
-
-data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5,
-2.3, 2.5, 2.3, 2.4, 2.7)
-length(data)
-doudata <- data * 2
-
-s1 <- seq(1:100)
-s2 <- seq(20:60)
-
-s3 <- mean(s2)
-
-s4 <- sum(51:91)
-
-s5 <- seq(1:1000)
-
-length(s1) + length(s2) + length(s3) + length(s4)
-
-Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
-
-s5 <- seq(100,1)
-s5
-
-vec <- c(24:1)
-
-Filter(function(i) { all(i %% c(3) == 0) | all(i %% c(5) == 0) }, vec)
 ```
 
+```{r}
+#3. New Age
+new_age <- c(age, 0, age)
+new_age
 
+#What happens to new age?
+#[]
+```
 
+```{r}
+#4. Sorting
+#R code and output:
+sort(age)
+```
+
+```{r}
+#5. Minimum and Maximum
+#R code and output:
+min(age)
+max(age)
+```
+
+```{r}
+#6. Vector 2
+data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5,
+2.3, 2.5, 2.3, 2.4, 2.7)
+#A. How many data points?
+length(data)
+#B. R code and output:
+data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5,
+2.3, 2.5, 2.3, 2.4, 2.7)
+data
+```
+
+```{r}
+#7. Double Data
+doudata <- data * 2
+#What happens to the data?
+#[The data has been doubled.]
+```
+
+```{r}
+#8. Sequence
+#8.1 Integers from 1 to 100:
+s1 <- seq(1:100)
+s1
+#8.2 Numbers from 20 to 60:
+s2 <- seq(20:60)
+s2
+#8.3 Mean of number from 20 to 60:
+s3 <- mean(s2)
+s3
+#8.4 Sum of numbers from 51 to 91:
+s4 <- sum(51:91)
+s4
+#8.5 Integers from 1 to 1,000:
+s5 <- 1:1000
+s5
+  #A. How many data points from 8.1 to 8.4?
+  length(s1) + length(s2) + length(s3) + length(s4)
+  #B. R code and output:
+  length(s1) + length(s2) + length(s3) + length(s4)
+  #C. For 8.5 find only maximum data points until 10.
+  maxto_10 <- max(s5[s5 <- 10])
+  print(maxto_10)
+```
+
+```{r}
+#9. Filter
+#R code and output:
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+```
+
+```{r}
+#10. Backward Sequence
+#R code and output:
+s6 = seq(100,1)
+s6
+```
+
+```{r}
+#11. Filter List
+vec <- c(24:1)
+Filter(function(i) { all(i %% c(3) == 0) | all(i %% c(5) == 0) }, vec)
+#Sum of multiples:
+sum(Filter(function(i) { all(i %% c(3) == 0) | all(i %% c(5) == 0) }, vec))
+#A. How many datapoints from 10 to 11?
+length(s6) + length(vec) +length(sum)
+#R code and output:
+Filter(function(i) { all(i %% c(3) == 0) | all(i %% c(5) == 0) }, vec)
+sum(Filter(function(i) { all(i %% c(3) == 0) | all(i %% c(5) == 0) }, vec))
+length(s6) + length(vec) +length(sum)
+```
+
+```{r}
+#12. Blocks
+#x <- {0 + x + 5 + }
+#Describe the output:
+#The error unexpected '}' in "x <- {0 + x + 5 + }" occurs because R expects a complete 
+#and valid expression inside the curly braces {}.
+```
+
+```{r}
+#13. Vector 3 (x[i])
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75, 75, 77)
+#Find x[2] and x[3]. R code and output:
+score[2]
+score[3]
+```
+
+```{r}
+#14. Vector 4 (NA)
+a <- c(1, 2, NA, 4, NA, 6, 7)
+#Change the NA to 999 using the codes print(a,na.print="-999").
+print(a,na.print="-999")
+#R code and output:
+a <- c(1, 2, NA, 4, NA, 6, 7)
+print(a,na.print="-999")
+#Describe:
+#[The "print" was used to initialize for the NA value in that was inside the vector 'a'.]
+```
+
+```{r}
+#15. Special type of function
+name = readline(prompt="Input your name: ")
+age = readline(prompt="Input your age: ")
+print(paste("My name is",name, "and I am",age ,"years old."))
+print(R.version.string)
+#What is the output of the above code?
+#[The output of the code above was to prompt the user to enter their name and age to store 
+#it temporarily to put in to the string or sentence that is about to be printed out.]
+```
 
