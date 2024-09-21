@@ -131,7 +131,8 @@ pay
 #      C. Create an excel file from the table above and save it as csv file(PowerRanking). Import the csv file into the RStudio. What is the R script?
 forbes_data <- read.csv("PowerRanking.csv")
 #      d. Access the rows 10 to 20 and save it as Ranks.RData. Write the R script and its output.
-forbes_data[10:20, ]
+ranks <- forbes_data[10:20, ]
+save(ranks, file = "Ranks.RData")
 #      e. Describe its output.
 # The output table containing rows 10 to 20. This includes the celebrities ranked from 10th to 20th position, their names, and their corresponding pay, which is stored in the csv file.
 

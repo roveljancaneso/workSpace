@@ -61,6 +61,7 @@ celebrity_name
 pay
 forbes_data <- read.csv("PowerRanking.csv")
 forbes_data[10:20, ]
+save(ranks, file = "Ranks.RData")
 
 #Num9
 library(openxlsx)
