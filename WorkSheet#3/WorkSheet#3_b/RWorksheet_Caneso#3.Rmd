@@ -1,0 +1,97 @@
+---
+title: "RWorksheet_Caneso#3b"
+author: "Rovel Jan Caneso"
+date: "2024-10-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Number 1**
+```{r}
+#[1.] Create a data frame using the table below.
+#     a. Write the codes.
+akongData <- data.frame(
+  Respondents = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20),
+  Sex = c(2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2),
+  Fathers_Occupation = c(1, 3, 3, 3, 1, 2, 3, 1, 1, 1, 3, 2, 1, 3, 3, 1, 3, 1, 2, 1),
+  Persons_at_Home = c(5, 7, 3, 8, 5, 9, 6, 7, 8, 4, 7, 5, 4, 7, 8, 8, 3, 11, 7, 6),
+  Siblings_at_School = c(6, 4, 4, 1, 2, 1, 5, 3, 1, 2, 3, 2, 5, 5, 2, 1, 2, 5, 3, 2),
+  Types_of_Houses = c(1, 2, 3, 1, 1, 3, 3, 1, 2, 3, 2, 3, 2, 2, 3, 3, 3, 3, 3, 2)
+)
+#     b. Describe the data. Get the structure or the summary of the data
+str(akongData)
+#     c. Is the mean number of siblings attending is 5?
+sm <- mean(akongData$Siblings_at_School)
+sm == 5
+#     d. Extract the 1st two rows and then all the columns using the subsetting functions.
+#        Write the codes and its output.
+akongData[1:2, ]
+#     e. Extract 3rd and 5th row with 2nd and 4th column. Write the codes and its result.
+akongData[c(3,5),c(2,4)]
+#     f. Select the variable types of houses then store the vector that results as types_houses.
+#       Write the codes.
+types_houses <- akongData$Types_of_Houses
+#     g. Select only all Males respondent that their father occupation was farmer. Write the
+#        codes and its output.
+subset(akongData, Sex == 1 & Fathers_Occupation == 1)
+#     h. Select only all females respondent that have greater than or equal to 5 number of
+#        siblings attending school. Write the codes and its outputs.
+subset(akongData[,c(2,5)], Sex == 2 & Siblings_at_School >= 5)
+```
+
+**Number 2**
+```{r}
+#[2.] Write a R program to create an empty data frame. Using the following codes:
+df = data.frame(Ints=integer(),
+
+Doubles=double(), Characters=character(),
+Logicals=logical(),
+Factors=factor(),
+stringsAsFactors=FALSE)
+
+print("Structure of the empty dataframe:")
+print(str(df))
+#     a. Describe the results.
+# [It had the output of the data frames structure or summary.]
+```
+
+**Number 3**
+```{r}
+#[3.] Create a .csv file of this. Save it as HouseholdData.csv
+#     a. Import the csv file into the R environment. Write the codes.
+houseData <- read.csv("HouseholdData.csv")
+#     b. Convert the Sex into factor using factor() function and change it into integer.[Legend:
+#        Male = 1 and Female = 2]. Write the R codes and its output.
+houseData$Sex <- as.numeric(factor(houseData$Sex, levels = c("Male", "Female")))
+houseData
+#     c. Convert the Type of Houses into factor and change it into integer. [Legend: Wood
+#        = 1; Congrete = 2; Semi-Congrete = 3]. Write the R codes and its output.
+houseData$Types_of_Houses <- as.numeric(factor(houseData$Types_of_Houses, levels = c("Wood", "Congrete", "Semi-Congrete")))
+houseData$Types_of_Houses
+#     d. On father’s occupation, factor it as Farmer = 1; Driver = 2; and Others = 3. What
+#        is the R code and its output?
+houseData$Fathers_Occupation <- as.character(factor(houseData$Fathers_Occupation, labels = c("Farmer", "Driver", "Others")))
+houseData$Fathers_Occupation
+#     e. Select only all females respondent that has a father whose occupation is driver. Write
+#        the codes and its output.
+subset(houseData[,c(2:3)], Sex == 2 & Fathers_Occupation == "Driver")
+#     f. Select the respondents that have greater than or equal to 5 number of siblings attending
+#        school. Write the codes and its output.
+subset(houseData[,c(1,5)], Siblings_at_School >= 5)
+```
+
+**Number 4**
+```{r name, echo=FALSE, collapse=TRUE}
+"A graph of people's mood by their tweets between July 14 and July 21, 2020, can be depicted" 
+"as three types of emotions: negative, neutral, and positive. From the graph shown above, a" 
+"high quantity of negative tweets can be observed on these days with an unevenly larger number" 
+"on July 15 and 21. There is a smaller amount of positive tweets, which can be noticed on some" 
+"days, with a constant neutral number throughout the week. By utilizing the ggplot2 of the R" 
+"programming, this graph can be employed for text data classification, determination of" 
+"frequency of positive, negative, and neutral sentiment, and identification of trends in" 
+"large datasets."
+```
+

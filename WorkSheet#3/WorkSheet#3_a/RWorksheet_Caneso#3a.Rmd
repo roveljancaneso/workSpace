@@ -1,0 +1,134 @@
+---
+title: "RWorksheet_Caneso#3a"
+author: "Rovel Jan Caneso"
+date: "2024-09-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+***USING VECTORS***
+```{r}
+```
+**Number 1**
+```{r}
+#[1.] There is a built-in vector LETTERS contains the uppercase letters of the alphabet
+#and letters which contains the lowercase letters of the alphabet.
+LETTERS
+letters
+#Based on the above vector LETTERS:
+#   a. You need to produce a vector that contains the first 11 letters.
+f11 <- LETTERS[1:11]
+f11
+#   b. Produce a vector that contains the odd numbered letters.
+odd <- LETTERS[seq(1, length(LETTERS), by = 2)]
+odd
+#   c. Produce a vector that contains the vowels
+vow <- LETTERS[LETTERS %in% c("A", "E", "I", "O", "U")]
+vow
+
+#Based on the above vector letters:
+#   d. Produce a vector that contains the last 5 lowercase letters.
+l5 <- letters[22:26]
+l5
+#   e. Produce a vector that contains letters between 15 to 24 letters in lowercase.
+low <- letters[15:24]
+low
+```
+
+**Number 2**
+```{r}
+#[2.] 2. Create a vector(not a dataframe) with the average temperatures in April for 
+#Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island, and Davao City. The average
+#temperatures in Celcius are 42, 39, 34, 34, 30, and 27 degrees.
+
+#   a. What is the R code and its result for creating a character vector for the city/town
+#      of Tuguegarao City, Manila, Iloilo City, Tacloban,Samal Island, and Davao City? Name the
+#      object as city. The names should follow the same order as in the instruction.
+city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+city
+#   b. The average temperatures in Celcius are 42, 39, 34, 34, 30, and 27 degrees.
+#      Name the object as temp. Write the R code and its output. Numbers should also follow
+#      what is in the instruction.
+temp <- c(42, 39, 34, 34, 30, 27)
+temp
+#   c. Create a dataframe to combine the city and the temp by using ‘data.frame(). What
+#      the R code and its result?
+cTemp <- data.frame(
+  city = city,
+  temp = temp
+)
+cTemp
+#    d. Associate the dataframe you have created in 2.(c) by naming the columns using
+#       the names() function. Change the column names by using names() function as City and
+#       Temperature. What is the R code and its result?
+names(cTemp) <- c("City", "Temperature")
+cTemp
+#    e. Print the structure by using str() function. Describe the output.
+# [This outputs the vectors inside the data frame.]
+str(cTemp)
+#    f. From the answer in d, what is the content of row 3 and row 4 What is its R code and
+#       its output?
+cTemp[3:4,]
+#    g. From the answer in d, display the city with highest temperature and the city with
+#       the lowest temperature. What is its R code and its output?
+head(cTemp, 1)
+tail(cTemp, 1)
+```
+
+
+***USING MATRICES***
+```{r}
+
+```
+**Number 2**
+```{r}
+#[2.] Create a matrix of one to eight and eleven to fourteen with four columns and three rows.
+#     a. What will be the R code for the #2 question and its result?
+mat1 <- matrix(cbind(c(1:8),c(11:14)),3,4)
+mat1
+#     b. Multiply the matrix by two. What is its R code and its result?
+mat1 <- mat1 * 2
+mat1
+#     c. What is the content of row 2? What is its R code?
+mat1[2,]
+#     d. What will be the R code if you want to display the column 3 and column 4 in row 1
+#        and row 2? What is its output?
+mat1[1:2, 3:4]
+#     e. What is the R code is you want to display only the columns in 2 and 3, row 3? What
+#        is its output?
+mat1[3, 2:3]
+#     f. What is the R code is you want to display only the columns 4? What is its output?
+mat1[,4]
+#     g. Name the rows as isa, dalawa, tatlo and columns as uno, dos, tres, quatro
+#        for the matrix that was created in b.‘. What is its R code and corresponding output?
+dimnames(mat1) <- list(c("isa", "dalawa", "tatlo"), c("uno", "dos", "tres", "quatro"))
+mat1
+#     h. From the original matrix you have created in a, reshape the matrix by assigning a
+#        new dimension with dim(). New dimensions should have 2 columns and 6 rows. What will
+#        be the R code and its output?
+dim(mat1) <- c(6, 2)
+mat1
+```
+
+***USING ARRAYS***
+```{r}
+```
+**Number 3**
+```{r}
+#[3.] An array contains 1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1
+akongArr <- array(c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1))
+#     a. Create an array for the above numeric values. Each values will be repeated twice
+#        What will be the R code if you are to create a three-dimensional array with 4 columns and
+#        2 rows. What will be its output?
+akongArr2 <- array(rep(akongArr, each = 2), dim = c(2, 4, 3))
+#     b. How many dimensions do your array have?
+dim(akongArr2)
+#     c. Name the rows as lowercase letters and columns as uppercase letters starting from
+#        the A. The array names should be “1st-Dimensional Array”, “2nd-Dimensional Array”, and
+#        “3rd-Dimensional Array”. What will be the R codes and its output?
+dimnames(akongArr2) <- list(c("a","b"), c("A","B","C","D"),c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
+akongArr2
+```
+
