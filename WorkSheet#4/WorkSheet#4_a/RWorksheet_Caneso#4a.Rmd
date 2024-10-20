@@ -69,13 +69,58 @@ summary(factMonths)
 ***Number 4***
 ```{r}
 #[4.] Create a vector and factor for the table below.
-direction <- data.frame(
-  Direction = c("East", "West", "North"),
-  Frequency = c(1,4,3)
-)
-direction
+direction <- c("East", "West", "North")
+frequency <- c(1, 4, 3)
+new_order_data <- factor(direction, levels = c("East","West","North"))
+print(new_order_data)
 ```
 
+***Number 5***
+```{r}
+#[5.] Enter the data below in Excel with file name = import_march.csv
+#     a. Import the excel file into the Environment Pane using read.table() function.
+#        Write the code.
+tableCSV <- read.table("import_march.csv", header = T, sep = ",")
+#     b. View the dataset. Write the R scripts and its result.
+tableCSV
+```
 
+***Number 6***
+```{r}
+#[6.] Full Search
+#     a. Create an R Program
+search <- function(input){
+  if (input < 1 | input > 50){
+    print("The number selected is beyond the range of 1 to 50")
+  }else if (input == 20){
+    print("TRUE")
+  }else {
+    print(input)
+  }
+}
+input <- readline(prompt = "Select a number from 1 - 50: ")
+search(input)
+```
 
+***Number 7***
+```{r}
+#[7.] Change
+#     a. Write a function that prints the minimum number of bills that must be paid, given the
+#     price of the snack.
+numBills <- function(price){
+  bills <- c(500, 100, 50, 20)
+  total_bills <- 0
+  
+  for (bill in bills) {
+    count <- floor(price / bill)
+    price <- price - count * bill
+    total_bills <- total_bills + count
+  }
+  
+  return(total_bills)
+}
+
+price <- as.numeric(readline(prompt = "Enter the price of the snack: "))
+print(paste("Minimum number of bills needed to purchase a snack:", numBills(price)))
+```
 
