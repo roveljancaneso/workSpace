@@ -1,0 +1,81 @@
+---
+title: "RWorksheet_Caneso#4a"
+author: "Rovel Jan Caneso"
+date: "2024-10-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***Number 1***
+```{r}
+#[1.] Create a data frame.
+#   a. Describe the data.
+#      [Outputs a table for the data that is inside the data frame.]
+shoeDetails <- data.frame(
+  Shoe_size = c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5, 12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 10.0, 6.5, 7.5, 8.5, 10.5, 8.5, 10.5, 11.0, 9.0, 13.0),
+  Height = c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 66.0, 64.0, 67.0, 73.0, 69.0, 72.0, 70.0, 69.0, 70.0),
+  Gender = c('F', 'F', 'F', 'F', 'M', 'F', 'F', 'F', 'M', 'F', 'M', 'F', 'M', 'M', 'M', 'M', 'F', 'F', 'M', 'F', 'F', 'M', 'M', 'F', 'M', 'M', 'M', 'M')
+)
+shoeDetails
+
+#   b. Create a subset by males and females with their corresponding shoe size and height.
+#      What its result? Show the R scripts.
+male <- subset(shoeDetails, shoeDetails$Gender == "M")
+male
+female <- subset(shoeDetails, shoeDetails$Gender == "F")
+female
+
+#   c. Find the mean of shoe size and height of the respondents. Write the R scripts and its
+#      result.
+mean(shoeDetails$Shoe_size)
+mean(shoeDetails$Height)
+
+#   d. Is there a relationship between shoe size and height? Why?
+#      [Yes, because the taller the person it is also the same with their shoe size,
+#       but not exactly all the time.]
+```
+
+***Number 2***
+```{r}
+#[2.] Construct character vector months to a factor with factor() and assign the result to
+#     factor_months_vector. Print out factor_months_vector and assert that R prints out
+#     the factor levels below the actual values.
+months <- c("March","April","January","November","January",
+"September","October","September","November","August",
+"January","November","November","February","May","August",
+"July","December","August","August","September","November","February","April")
+months
+
+factMonths <- factor(months)
+factMonths
+levels(factMonths)
+```
+
+***Number 3***
+```{r}
+#[3.] Check the summary() of the months_vector and factor_months_vector. | Interpret 
+#     the results of both vectors. Are they both equally useful in this case?
+summary(months)
+summary(factMonths)
+#   [The summary of the vector months only gives the length, class, and mode of the vector
+#    which is not that much useful, unlike the summary of the factored months which provides 
+#    a detailed frequency count of each level in the factor, which is much more useful
+#    in understanding how often each month appears.]
+```
+
+***Number 4***
+```{r}
+#[4.] Create a vector and factor for the table below.
+direction <- data.frame(
+  Direction = c("East", "West", "North"),
+  Frequency = c(1,4,3)
+)
+direction
+```
+
+
+
+
