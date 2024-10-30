@@ -1,0 +1,105 @@
+---
+title: "RWorksheet_Caneso#4b"
+author: "Rovel Jan Caneso"
+date: "2024-10-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+**1. Using the for loop, create an R script that will display a 5x5 matrix as shown in
+Figure 1. It must contain vectorA = [1,2,3,4,5] and a 5 x 5 zero matrix.**
+```{r}
+vectorA = c(1,2,3,4,5)
+
+matr <- matrix(nrow = 5, ncol = 5)
+
+for(i in 1:5){
+  for(j in 1:5){
+    matr[i, j] <- vectorA[abs(i-j) + 1]
+  }
+}
+
+for(i in 1:5){
+  for(j in 1:5){
+    cat(matr[i,j], " ")
+  }
+  cat("\n")
+}
+
+matri <- matrix(0, nrow = 5, ncol = 5)
+
+for(i in 1:5){
+  for(j in 1:5){
+    cat(matri[i,j], " ")
+  }
+  cat("\n")
+}
+```
+
+**2. Print the string "*" using for() function. The output should be the same as shown
+in Figure**
+```{r}
+for(i in 1:5){
+  for(j in 1:i){
+    cat("*", " ")
+  }
+  cat("\n")
+}
+```
+
+**3. Get an input from the user to print the Fibonacci sequence starting from the 1st input
+up to 500. Use repeat and break statements. Write the R Scripts and its output.**
+```{r}
+#inp <- readline("Enter a number: ")
+inp <- 1
+
+f <- 0
+s <- 1
+repeat{
+  if(f >= inp){
+    cat(f, " ")
+  }
+  
+  fibona <- f+s
+  f <- s
+  s <- fibona
+  
+  if(f > 500) break
+}
+```
+
+**4. Import the dataset as shown in Figure 1 you have created previously.**
+```{r}
+#a. What is the R script for importing an excel or a csv file? Display the first 6 rows of
+#   the dataset? Show your codes and its result.
+shoesize <- read.csv("shoesize_data.csv")
+head(shoesize)
+#b. Create a subset for gender(female and male). How many observations are there in
+#   Male? How about in Female? Write the R scripts and its output.
+female <- subset(shoesize, Gender == "F", select = Gender)
+female
+male <- subset(shoesize, Gender == "M", select = Gender)
+male
+#c. Create a graph for the number of males and females for Household Data. Use plot(),
+#   chart type = barplot. Make sure to place title, legends, and colors. Write the R scripts and
+#   its result.
+genders <- table(shoesize$Gender)
+
+barplot(genders,
+        main = "Number of Females and Males",
+        xlab = "Gender",
+        ylab = "Count",
+        col = c("Pink", "Blue"),
+        names.arg = c("Female", "Male"),
+        legend = rownames(genders))
+```
+
+**5**
+```{r}
+
+```
+
